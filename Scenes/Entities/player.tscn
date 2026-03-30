@@ -16,7 +16,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=1109724899]
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_blnjl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1900256761]

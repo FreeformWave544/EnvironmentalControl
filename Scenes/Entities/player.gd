@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Pet
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -800.0
@@ -21,6 +22,8 @@ func _physics_process(delta: float) -> void:
 			print("Well done!")
 		else:
 			print("FAILED.")
+			global_position = get_parent().get_parent().find_child("Start").global_position
+			complete = false ; index = 1
 		return
 	if not is_on_floor(): velocity += get_gravity() * delta
 	if "jump" in actions[index] and is_on_floor(): velocity.y = JUMP_VELOCITY
