@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b38m1qs0a44gi"]
+
+[ext_resource type="Script" uid="uid://fgr2xfa7phgw" path="res://Scenes/Entities/player.gd" id="1_blnjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqm6o"]
+size = Vector2(64, 128)
+
+[sub_resource type="Gradient" id="Gradient_pveef"]
+offsets = PackedFloat32Array(0.19879518, 0.6566265, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qbyki"]
+gradient = SubResource("Gradient_pveef")
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Player" type="CharacterBody2D" unique_id=1109724899]
+script = ExtResource("1_blnjl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1900256761]
+shape = SubResource("RectangleShape2D_nqm6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1120681387]
+texture = SubResource("GradientTexture2D_qbyki")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1181498313]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+rotation_smoothing_enabled = true
