@@ -1,20 +1,26 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var SPEED = 300.0
+@export var JUMP_VELOCITY = -800.0
+const FILE_PATH := "res://recordings/actions.json"
 
 var actions = []
-
-var index = 0
-const FILE_PATH := "res://recordings/actions.json"
+var index = 1
 
 func _ready() -> void:
 	load_actions()
+	SPEED = actions[0][0]
+	JUMP_VELOCITY = actions[0][1]
 
+var complete = false
 func _physics_process(delta: float) -> void:
-	if "EOF" in actions[index]:
-		set_process(false)
-		print("Finished... ", index)
+	if "EOF" in actions[index] and not complete:
+		complete = true
+		if abs(global_position - Vector2(actions[index][0], actions[index][1])) < Vector2(0.1, 0.1):
+			get_parent().add_dude() if get_parent().name != "Dudes" else get_parent().get_parent().add_dude()
+			print("Well done!")
+		else:
+			print("FAILED.")
 		return
 	if not is_on_floor(): velocity += get_gravity() * delta
 	if "jump" in actions[index] and is_on_floor(): velocity.y = JUMP_VELOCITY
@@ -23,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		if str(act) != "jump": direction = float(act)
 	if direction: velocity.x = float(direction) * SPEED
 	else: velocity.x = move_toward(velocity.x, 0, SPEED)
-	index += 1
+	if not complete: index += 1
 	move_and_slide()
 
 func load_actions():
