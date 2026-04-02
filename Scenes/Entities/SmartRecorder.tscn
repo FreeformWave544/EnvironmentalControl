@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://bo7kegecm3yip"]
+[gd_scene format=3 uid="uid://co3o3ydwt4pvt"]
 
-[ext_resource type="Script" uid="uid://dt3h0yudhx11c" path="res://Scenes/Entities/Recorder.gd" id="1_2vyb3"]
+[ext_resource type="Script" uid="uid://bvo4lqevslow4" path="res://Scenes/Entities/SmartRecorder.gd" id="1_4gckg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2vyb3"]
 size = Vector2(64, 128)
 
 [sub_resource type="Gradient" id="Gradient_2vyb3"]
-offsets = PackedFloat32Array(0.19879518, 0.6566265, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.737193, 0.7371929, 0.7371929, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.19879518, 0.6566265, 0.9939759)
+colors = PackedColorArray(0, 0.17254902, 0, 1, 0.7372549, 1, 0.7372549, 1, 4.6205523e-06, 0.6101532, 0.23306513, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ok8sn"]
 gradient = SubResource("Gradient_2vyb3")
@@ -15,10 +15,10 @@ height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Recorder" type="CharacterBody2D" unique_id=1553453054]
+[node name="SmartRecorder" type="CharacterBody2D" unique_id=1553453054]
 z_index = 2
 collision_mask = 2
-script = ExtResource("1_2vyb3")
+script = ExtResource("1_4gckg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627408885]
 shape = SubResource("RectangleShape2D_2vyb3")

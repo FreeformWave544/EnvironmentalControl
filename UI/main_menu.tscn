@@ -2,6 +2,86 @@
 
 [ext_resource type="Script" uid="uid://dj61at8iqkg74" path="res://UI/main_menu.gd" id="1_p8ccj"]
 
+[sub_resource type="Gradient" id="Gradient_p8ccj"]
+colors = PackedColorArray(0.20392157, 0, 0.29411766, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tk8dj"]
+noise_type = 4
+fractal_type = 2
+fractal_octaves = 1
+domain_warp_enabled = true
+domain_warp_amplitude = 5.0
+domain_warp_frequency = 0.3
+domain_warp_fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d8nwk"]
+width = 1152
+height = 648
+noise = SubResource("FastNoiseLite_tk8dj")
+color_ramp = SubResource("Gradient_p8ccj")
+in_3d_space = true
+bump_strength = 32.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8ccj"]
+bg_color = Color(0.42352942, 0.37254903, 0.5411765, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.3764706, 0.4509804, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tk8dj"]
+bg_color = Color(0.2994336, 0.25861812, 0.39200807, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.3764706, 0.4509804, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8nwk"]
+bg_color = Color(0.48926926, 0.43591648, 0.6145588, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.3764706, 0.4509804, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_size = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8nwk"]
+
 [node name="MainMenu" type="Control" unique_id=10263590]
 layout_mode = 3
 anchors_preset = 15
@@ -12,12 +92,17 @@ grow_vertical = 2
 script = ExtResource("1_p8ccj")
 
 [node name="Panel" type="Panel" parent="." unique_id=59794251]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=693053495]
+texture = SubResource("NoiseTexture2D_d8nwk")
+centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=1278367181]
 layout_mode = 1
@@ -33,6 +118,10 @@ alignment = 1
 
 [node name="Start" type="Button" parent="Panel/CenterContainer/VBoxContainer" unique_id=1643552735]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_p8ccj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tk8dj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d8nwk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d8nwk")
 text = "START"
 
 [connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

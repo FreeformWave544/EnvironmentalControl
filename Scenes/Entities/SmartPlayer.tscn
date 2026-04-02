@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://b38m1qs0a44gi"]
+[gd_scene format=3 uid="uid://det7ubgivauqc"]
 
-[ext_resource type="Script" uid="uid://fgr2xfa7phgw" path="res://Scenes/Entities/player.gd" id="1_blnjl"]
+[ext_resource type="Script" uid="uid://ce1l85e5fnkqp" path="res://Scenes/Entities/SmartPlayer.gd" id="1_1bc60"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqm6o"]
 size = Vector2(64, 128)
@@ -15,9 +15,9 @@ height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Player" type="CharacterBody2D" unique_id=1109724899]
+[node name="SmartPlayer" type="CharacterBody2D" unique_id=1109724899]
 collision_mask = 2
-script = ExtResource("1_blnjl")
+script = ExtResource("1_1bc60")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1900256761]
 shape = SubResource("RectangleShape2D_nqm6o")
