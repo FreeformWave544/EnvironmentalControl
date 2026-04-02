@@ -27,6 +27,13 @@ texture = SubResource("GradientTexture2D_ok8sn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=412465023]
 process_callback = 0
+limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+position_smoothing_speed = 50.0
 rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.08
+drag_right_margin = 0.05
+drag_bottom_margin = 0.08

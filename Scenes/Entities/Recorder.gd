@@ -3,31 +3,56 @@ class_name Player
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -600.0
-const FILE_PATH := "res://recordings/actions.json"
+@export var totalAirJumps := 1
+@export var totalWallJumps := 1
+var wallJumped := 0
+var airJumped := 0
+const FILE_PATH := "user://actions.json"
 
-var actions: Array = [[SPEED, JUMP_VELOCITY]]
+var actions: Array = [[SPEED, JUMP_VELOCITY, totalAirJumps, totalWallJumps]]
 var index: int = 0
 
-var recording = false
+var recording := false:
+	set(v):
+		recording = v
+		if v:
+			$Sprite2D.modulate.r += 0.20
+			$Sprite2D.modulate.g -= 0.10
+			$Sprite2D.modulate.b -= 0.10
+		else:
+			$Sprite2D.modulate.r -= 0.20
+			$Sprite2D.modulate.g += 0.10
+			$Sprite2D.modulate.b += 0.10
+
 func _physics_process(delta: float) -> void:
 	var frame_actions: Array = []
 	if not is_on_floor(): velocity += get_gravity() * delta
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	else: wallJumped = 0 ; airJumped = 0
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor(): velocity.y = JUMP_VELOCITY
+		elif is_on_wall() and wallJumped < totalWallJumps:
+			velocity.y = JUMP_VELOCITY
+			wallJumped += 1
+			airJumped = max(airJumped - 1, 0)
+		elif airJumped < totalAirJumps:
+			velocity.y = JUMP_VELOCITY
+			airJumped += 1
 		frame_actions.append("jump")
 	var direction := Input.get_axis("left", "right")
 	if direction != 0:
 		velocity.x = direction * SPEED
 	else: velocity.x = move_toward(velocity.x, 0, SPEED)
 	frame_actions.append(direction)
-	actions.append(frame_actions)
+	if recording: actions.append(frame_actions)
 	index += 1
 	move_and_slide()
-	save_actions()
+	if recording: save_actions()
 
 func save_actions():
 	if not recording: return
-	var save_array = actions.duplicate()
+	
+	actions[0] = [SPEED, JUMP_VELOCITY, totalAirJumps, totalWallJumps]
+	var save_array = actions.duplicate(true)
 	save_array.append([global_position.x, global_position.y, "EOF"])
 	var f := FileAccess.open(FILE_PATH, FileAccess.ModeFlags.WRITE)
 	if f:
