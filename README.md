@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="game/images/SaladMonster.png" alt="logo" width="200" height="auto" />
+  <img src="https://img.itch.zone/aW1hZ2UvNDQ0MjQ0OC8yNjQ5MTIxOS5wbmc=/250x600/XWiHIr.png" alt="logo" width="400" height="auto" />
   <h1>ENVIRONMENTAL CLONES</h1>
   <h3>Formerly known as Environmental Control</h3>
   
