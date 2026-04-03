@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c0tvjkvch7dpf"]
+
+[ext_resource type="Script" uid="uid://cuhcjeuent8ec" path="res://Scenes/shop.gd" id="1_a0mxf"]
+
+[node name="Shop" type="CanvasLayer" unique_id=2021788781]
+script = ExtResource("1_a0mxf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=772579649]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(15.385325, 15.385326, 15.385325, 0.769)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=284306405]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=38579817]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="smartify" type="Button" parent="CenterContainer/HBoxContainer" unique_id=652711410]
+layout_mode = 2
+text = "Smarter Clones
+(15 Drops)"
+
+[node name="speedMulti" type="Button" parent="CenterContainer/HBoxContainer" unique_id=678771139]
+layout_mode = 2
+text = "Greater Player Speed Multiplier
+(2 Drops)"
+
+[node name="Return" type="Button" parent="." unique_id=314775696]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Leave Shop"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/smartify" to="." method="_on_smartify_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/speedMulti" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

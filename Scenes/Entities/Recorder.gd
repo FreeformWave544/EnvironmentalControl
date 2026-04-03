@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var SPEED = 300.0
+@onready var SPEED = 300.0 * Global.playerSpeedMulti
 @export var JUMP_VELOCITY = -600.0
 @export var totalAirJumps := 1
 @export var totalWallJumps := 1

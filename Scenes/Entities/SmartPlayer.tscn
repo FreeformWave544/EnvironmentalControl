@@ -7,9 +7,9 @@ size = Vector2(64, 128)
 
 [sub_resource type="Gradient" id="Gradient_pveef"]
 offsets = PackedFloat32Array(0.19879518, 0.6566265, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0, 0.32941177, 0, 0.57254905, 1, 1, 1, 0.49803922, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qbyki"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1bc60"]
 gradient = SubResource("Gradient_pveef")
 height = 128
 fill = 1
@@ -23,4 +23,4 @@ script = ExtResource("1_1bc60")
 shape = SubResource("RectangleShape2D_nqm6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1120681387]
-texture = SubResource("GradientTexture2D_qbyki")
+texture = SubResource("GradientTexture2D_1bc60")

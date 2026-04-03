@@ -7,7 +7,7 @@ size = Vector2(64, 128)
 
 [sub_resource type="Gradient" id="Gradient_2vyb3"]
 offsets = PackedFloat32Array(0.19879518, 0.6566265, 0.9939759)
-colors = PackedColorArray(0, 0.17254902, 0, 1, 0.7372549, 1, 0.7372549, 1, 4.6205523e-06, 0.6101532, 0.23306513, 0)
+colors = PackedColorArray(0, 0.02942832, 0, 1, 0.31172907, 0.4333519, 0.31172907, 1, 4.6205523e-06, 0.6101532, 0.23306513, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ok8sn"]
 gradient = SubResource("Gradient_2vyb3")
@@ -16,7 +16,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="SmartRecorder" type="CharacterBody2D" unique_id=1553453054]
-z_index = 2
+z_index = -1
 collision_mask = 2
 script = ExtResource("1_4gckg")
 
