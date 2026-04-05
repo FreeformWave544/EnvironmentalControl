@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dj61at8iqkg74" path="res://UI/main_menu.gd" id="1_p8ccj"]
 
 [sub_resource type="Gradient" id="Gradient_p8ccj"]
-colors = PackedColorArray(0.20392157, 0, 0.29411766, 0, 1, 1, 1, 1)
+colors = PackedColorArray(0.20392157, 0, 0.29411766, 0, 0.7877592, 0.78775924, 0.787759, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tk8dj"]
 noise_type = 4
@@ -14,12 +14,14 @@ domain_warp_amplitude = 5.0
 domain_warp_frequency = 0.3
 domain_warp_fractal_octaves = 10
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d8nwk"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p8ccj"]
 width = 1152
 height = 648
 noise = SubResource("FastNoiseLite_tk8dj")
 color_ramp = SubResource("Gradient_p8ccj")
+seamless = true
 in_3d_space = true
+seamless_blend_skirt = 0.828
 bump_strength = 32.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8ccj"]
@@ -100,11 +102,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=693053495]
-texture = SubResource("NoiseTexture2D_d8nwk")
+[node name="Parallax2D" type="Parallax2D" parent="Panel" unique_id=577533994]
+scroll_scale = Vector2(1.5, 1.5)
+repeat_size = Vector2(1152, 648)
+autoscroll = Vector2(15, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Parallax2D" unique_id=451820337]
+texture = SubResource("NoiseTexture2D_p8ccj")
 centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=1278367181]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

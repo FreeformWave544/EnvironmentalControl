@@ -229,7 +229,7 @@ bump_strength = 32.0
 radius = 5.0990195
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqkje"]
-size = Vector2(20, 120)
+size = Vector2(93, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81xng"]
 size = Vector2(2000000, 20)
@@ -315,7 +315,7 @@ shape = SubResource("CircleShape2D_81xng")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End" unique_id=1342076406]
-position = Vector2(939, -1083)
+position = Vector2(975.5, -1083)
 shape = SubResource("RectangleShape2D_wqkje")
 
 [node name="Deathzone" type="Area2D" parent="." unique_id=1238362653]
